@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>me.mren</groupId>
 			<artifactId>file-poller</artifactId>
-			<version>2018.10.05_73</version>
+			<version>2.1</version>
 		</dependency>
 		
 		<dependency>
