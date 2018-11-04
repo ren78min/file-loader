@@ -5,15 +5,14 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
-import java.util.concurrent.BlockingQueue;
+import java.util.HashSet;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.internal.verification.Times;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import me.mren.fileloader.filevisitor.FileVisitor;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FileVisitorTest {
@@ -23,19 +22,14 @@ public class FileVisitorTest {
 	private FileVisitResult result;
 
 	@Mock
-	private BlockingQueue<Path> fileQueue;
-
-	@Mock
 	private Path file;
 
 	@Test
 	public void whenVisitFileThenFileQueued() throws InterruptedException, IOException, IllegalAccessException {
 		givenANewFileVisitor();
-		givenFileQueueIsInitialized();
 
 		whenVisitFile();
 
-		thenFileIsQueued();
 		thenResultIsContinue();
 	}
 
@@ -49,11 +43,7 @@ public class FileVisitorTest {
 	}
 
 	private void givenANewFileVisitor() {
-		fileVisitor = new FileVisitor();
-	}
-
-	private void givenFileQueueIsInitialized() throws IllegalAccessException {
-		FieldUtils.writeDeclaredField(fileVisitor, "fileQueue", fileQueue, true);
+		fileVisitor = new FileVisitor(new HashSet<>());
 	}
 
 	private void whenVisitFile() throws IOException {
@@ -62,10 +52,6 @@ public class FileVisitorTest {
 
 	private void whenVisitFileFailed() throws IOException {
 		result = fileVisitor.visitFileFailed(file, new IOException());
-	}
-
-	private void thenFileIsQueued() throws InterruptedException {
-		Mockito.verify(fileQueue, new Times(1)).put(file);
 	}
 
 	private void thenResultIsContinue() {
