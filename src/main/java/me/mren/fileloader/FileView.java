@@ -56,10 +56,7 @@ public class FileView {
 		if (!date.equals(other.date)) {
 			return false;
 		}
-		if (size != other.size) {
-			return false;
-		}
-		return true;
+		return size == other.size;
 	}
 
 	@Override
