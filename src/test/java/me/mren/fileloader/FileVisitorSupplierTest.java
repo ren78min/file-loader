@@ -15,7 +15,7 @@ public class FileVisitorSupplierTest {
 		fileVisitorSupplier = new FileVisitorSupplier();
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = AssertionError.class)
 	public void testAppyWithNullParam() {
 		fileVisitorSupplier.apply(null);
 	}

@@ -34,12 +34,12 @@ public class FileViewTest {
 		fileView112 = new FileView(PATH1, SIZE1, DATE2);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = AssertionError.class)
 	public void testConstructorWithNullPath() {
 		new FileView(null, SIZE1, DATE1);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = AssertionError.class)
 	public void testConstructorWithNullDate() {
 		new FileView(PATH1, SIZE1, null);
 	}
