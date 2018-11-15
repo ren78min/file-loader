@@ -79,7 +79,7 @@ public class FileViewTest {
 
 	@Test
 	public void testToString() {
-		assertEquals("VisitResultView [absolutPath=PATH1, size=1, date=Wed Dec 31 19:00:00 EST 1969]",
+		assertEquals("VisitResultView [absolutPath=" + PATH1 + ", size=" + SIZE1 + ", date=" + DATE1 + "]",
 				fileView.toString());
 	}
 
