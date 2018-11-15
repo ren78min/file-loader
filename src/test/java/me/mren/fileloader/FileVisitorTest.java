@@ -75,7 +75,6 @@ public class FileVisitorTest {
 	}
 
 	private void givenBasicFileAttributes() {
-		Mockito.when(basicFileAttributes.creationTime()).thenReturn(FileTime.fromMillis(now - 3600000l));
 		Mockito.when(basicFileAttributes.lastModifiedTime()).thenReturn(FileTime.fromMillis(now));
 		Mockito.when(basicFileAttributes.size()).thenReturn(now);
 	}

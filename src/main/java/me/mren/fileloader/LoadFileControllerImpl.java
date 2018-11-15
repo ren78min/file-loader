@@ -34,10 +34,4 @@ public class LoadFileControllerImpl implements LoadFileController {
 		return result;
 	}
 
-	@Override
-	@GetMapping("/hello")
-	public String hello() {
-		return "Hello";
-	}
-
 }
