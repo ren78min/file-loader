@@ -1,5 +1,6 @@
 package me.mren.fileloader;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +29,7 @@ public class LoadFileControllerImpl implements LoadFileController {
 		try {
 			final Path baseDir = Paths.get(directory);
 			Files.walkFileTree(baseDir, fileVisitorSupplier.apply(result));
-		} catch (final Exception ioException) {
+		} catch (final IOException ioException) {
 			LOGGER.warn("IO Error.", ioException);
 		}
 		return result;

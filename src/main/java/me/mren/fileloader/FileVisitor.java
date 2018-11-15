@@ -12,24 +12,24 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class FileVisitor extends SimpleFileVisitor<Path> {
+public class FileVisitor extends SimpleFileVisitor<Path> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileVisitor.class);
 
 	private final Set<FileView> resultViews;
 
-	public FileVisitor(final Set<FileView> resultViews) {
+	FileVisitor(final Set<FileView> resultViews) {
 		this.resultViews = resultViews;
 	}
 
 	@Override
-	public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-		resultViews.add(createVisitResultView(file, attrs));
+	public FileVisitResult visitFile(final Path path, final BasicFileAttributes attrs) throws IOException {
+		resultViews.add(createVisitResultView(path, attrs));
 		return FileVisitResult.CONTINUE;
 	}
 
 	@Override
-	public FileVisitResult visitFileFailed(final Path file, final IOException ioException) throws IOException {
+	public FileVisitResult visitFileFailed(final Path path, final IOException ioException) throws IOException {
 		LOGGER.warn("Visit file failed.", ioException);
 		return FileVisitResult.CONTINUE;
 	}
