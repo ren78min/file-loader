@@ -1,8 +1,8 @@
-package me.mren.fileloader.filevisitor;
+package me.mren.fileloader;
 
 import java.util.Date;
 
-public class VisitResultView {
+public class FileView {
 
 	private final String absolutPath;
 
@@ -10,7 +10,13 @@ public class VisitResultView {
 
 	private final Date date;
 
-	VisitResultView(final String absolutPath, final long size, final Date date) {
+	FileView(final String absolutPath, final long size, final Date date) {
+		if (absolutPath == null) {
+			throw new IllegalArgumentException("AbsolutPath can't be null");
+		}
+		if (date == null) {
+			throw new IllegalArgumentException("Date can't be null");
+		}
 		this.absolutPath = absolutPath;
 		this.size = size;
 		this.date = date;
@@ -32,8 +38,8 @@ public class VisitResultView {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((absolutPath == null) ? 0 : absolutPath.hashCode());
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + absolutPath.hashCode();
+		result = prime * result + date.hashCode();
 		result = prime * result + (int) (size ^ (size >>> 32));
 		return result;
 	}
@@ -49,19 +55,11 @@ public class VisitResultView {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final VisitResultView other = (VisitResultView) obj;
-		if (absolutPath == null) {
-			if (other.absolutPath != null) {
-				return false;
-			}
-		} else if (!absolutPath.equals(other.absolutPath)) {
+		final FileView other = (FileView) obj;
+		if (!absolutPath.equals(other.absolutPath)) {
 			return false;
 		}
-		if (date == null) {
-			if (other.date != null) {
-				return false;
-			}
-		} else if (!date.equals(other.date)) {
+		if (!date.equals(other.date)) {
 			return false;
 		}
 		if (size != other.size) {

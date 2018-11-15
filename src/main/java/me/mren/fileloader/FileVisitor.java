@@ -1,4 +1,4 @@
-package me.mren.fileloader.filevisitor;
+package me.mren.fileloader;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -12,13 +12,13 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FileVisitor extends SimpleFileVisitor<Path> {
+class FileVisitor extends SimpleFileVisitor<Path> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileVisitor.class);
 
-	private final Set<VisitResultView> resultViews;
+	private final Set<FileView> resultViews;
 
-	public FileVisitor(final Set<VisitResultView> resultViews) {
+	public FileVisitor(final Set<FileView> resultViews) {
 		this.resultViews = resultViews;
 	}
 
@@ -34,10 +34,8 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
 		return FileVisitResult.CONTINUE;
 	}
 
-	private VisitResultView createVisitResultView(final Path file, final BasicFileAttributes attrs) {
-		final FileTime creationTime = attrs.creationTime();
-		final FileTime lastModifiedTime = attrs.lastModifiedTime();
-		final FileTime fileTime = creationTime.compareTo(lastModifiedTime) > 0 ? creationTime : lastModifiedTime;
-		return new VisitResultView(file.toAbsolutePath().toString(), attrs.size(), new Date(fileTime.toMillis()));
+	private FileView createVisitResultView(final Path path, final BasicFileAttributes attrs) {
+		final FileTime fileTime = attrs.lastModifiedTime();
+		return new FileView(path.toAbsolutePath().toString(), attrs.size(), new Date(fileTime.toMillis()));
 	}
 }

@@ -1,4 +1,4 @@
-package me.mren.fileloader.controller;
+package me.mren.fileloader;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.mren.fileloader.filevisitor.FileVisitor;
-import me.mren.fileloader.filevisitor.FileVisitorSupplier;
-import me.mren.fileloader.filevisitor.VisitResultView;
-
 @RestController
 public class LoadFileControllerImpl implements LoadFileController {
 
@@ -27,8 +23,8 @@ public class LoadFileControllerImpl implements LoadFileController {
 
 	@Override
 	@GetMapping("/loadFromPath")
-	public Set<VisitResultView> loadFromPath(@RequestParam final String directory) {
-		final Set<VisitResultView> result = new HashSet<>();
+	public Set<FileView> loadFromPath(@RequestParam final String directory) {
+		final Set<FileView> result = new HashSet<>();
 		try {
 			final Path baseDir = Paths.get(directory);
 			Files.walkFileTree(baseDir, fileVisitorSupplier.apply(result));
