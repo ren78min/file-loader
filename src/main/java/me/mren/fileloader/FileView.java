@@ -11,12 +11,9 @@ public class FileView {
 	private final Date date;
 
 	FileView(final String absolutPath, final long size, final Date date) {
-		if (absolutPath == null) {
-			throw new IllegalArgumentException("AbsolutPath can't be null");
-		}
-		if (date == null) {
-			throw new IllegalArgumentException("Date can't be null");
-		}
+		assert absolutPath != null;
+		assert date != null;
+
 		this.absolutPath = absolutPath;
 		this.size = size;
 		this.date = date;

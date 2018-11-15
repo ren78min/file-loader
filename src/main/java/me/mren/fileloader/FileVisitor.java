@@ -19,9 +19,8 @@ class FileVisitor extends SimpleFileVisitor<Path> {
 	private final Set<FileView> resultViews;
 
 	public FileVisitor(final Set<FileView> resultViews) {
-		if (resultViews == null) {
-			throw new IllegalArgumentException("ResultViews can't be null");
-		}
+		assert resultViews != null;
+
 		this.resultViews = resultViews;
 	}
 
