@@ -19,8 +19,6 @@ class FileVisitor extends SimpleFileVisitor<Path> {
 	private final Set<FileView> resultViews;
 
 	public FileVisitor(final Set<FileView> resultViews) {
-		assert resultViews != null;
-
 		this.resultViews = resultViews;
 	}
 

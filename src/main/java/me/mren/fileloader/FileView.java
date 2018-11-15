@@ -11,9 +11,6 @@ public class FileView {
 	private final Date date;
 
 	FileView(final String absolutPath, final long size, final Date date) {
-		assert absolutPath != null;
-		assert date != null;
-
 		this.absolutPath = absolutPath;
 		this.size = size;
 		this.date = date;

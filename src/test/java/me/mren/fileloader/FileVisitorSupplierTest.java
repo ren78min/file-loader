@@ -15,11 +15,6 @@ public class FileVisitorSupplierTest {
 		fileVisitorSupplier = new FileVisitorSupplier();
 	}
 
-	@Test(expected = AssertionError.class)
-	public void testAppyWithNullParam() {
-		fileVisitorSupplier.apply(null);
-	}
-
 	@Test
 	public void testAppy() {
 		assertNotNull(fileVisitorSupplier.apply(new HashSet<>(0)));
