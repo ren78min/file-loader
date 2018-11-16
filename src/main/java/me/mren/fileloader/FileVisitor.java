@@ -12,7 +12,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FileVisitor extends SimpleFileVisitor<Path> {
+class FileVisitor extends SimpleFileVisitor<Path> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileVisitor.class);
 

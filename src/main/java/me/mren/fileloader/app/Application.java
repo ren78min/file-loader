@@ -11,8 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:file-loader.properties")
-@ComponentScan(basePackages = { "me.mren.fileloader.controller", "me.mren.fileloader.filevisitor" })
-public class Application {
+@ComponentScan(basePackages = { "me.mren.fileloader" })
+class Application {
 
 	@PostConstruct
 	public void postConstruct() {
