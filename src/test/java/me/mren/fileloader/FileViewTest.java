@@ -64,7 +64,7 @@ public class FileViewTest {
 		assertFalse(fileView.equals(fileView112));
 
 		assertFalse(fileView.equals(null));
-		assertFalse(fileView.equals(DATE1));
+		assertFalse(fileView.equals(new Object()));
 	}
 
 	@Test
