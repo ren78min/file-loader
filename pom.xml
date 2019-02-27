@@ -6,7 +6,7 @@
 
 	<groupId>me.mren</groupId>
 	<artifactId>file-loader</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${project_version}</version>
 	<packaging>jar</packaging>
 
 	<name>file-loader</name>
@@ -36,6 +36,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>me.mren</groupId>
+			<artifactId>file-loader-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 
 		<dependency>
