@@ -34,7 +34,7 @@ public class LoadFileControllerImplTest {
 
 		loadFileControllerImpl.loadFromPath("src/main/java/me/mren/fileloader");
 
-		thenVisitFileCount(6);
+		thenVisitFileCount(5);
 		thenVisitFileFailedCount(0);
 		thenPreVisitDirectoryCount(2);
 		thenPostVisitDirectoryCount(2);
